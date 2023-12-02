@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    {% block title %}я лох{% endblock %}
+</head>
+
+<body>
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
+            <li class="nav-item"><a href="/doctors" class="nav-link">Наши врачи</a></li>
+            <li class="nav-item"><a href="/services" class="nav-link">Услуги</a></li>
+            <li class="nav-item"><a href="/patients" class="nav-link">Пациенты</a></li>
+            <li class="nav-item"><a href="/departments" class="nav-link">Отделения</a></li>
+        </ul>
+    </header>
+</div>
+<div class="container">
+{% block body %}{% endblock %}
+</div>
+</body>
+</html>
