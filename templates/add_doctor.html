@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Add a doctor</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('add_doctor')}}" method="post">
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" required><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="secondname">Second Name:</label>
+    <input type="text" id="secondname" name="secondname"><br>
+
+    <label for="momentofstartworking">Moment of Start Working:</label>
+    <input type="date" id="momentofstartworking" name="momentofstartworking" required><br>
+
+    <label for="sex">Sex:</label>
+    <select id="sex" name="sex">
+        {% for sex in sexes %}
+        <option value="{{ sex.id }}">{{ sex.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="specialization">Specialization:</label>
+    <select id="specialization" name="specialization">
+        {% for specialization in specializations %}
+        <option value="{{ specialization.id }}">{{ specialization.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="department">Department:</label>
+    <select id="department" name="department">
+        {% for department in departments %}
+        <option value="{{ department.id }}">{{ department.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">Add Doctor</button>
+</form>
+
+{% endblock %}

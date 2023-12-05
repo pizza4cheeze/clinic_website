@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
-<h1>Doctors List</h1>
+<div>
+    <h1>Doctors List</h1>
+
+<a href="{{ url_for('add_doctor') }}" class="btn btn-primary">Создать</a>
+</div>
+
 <table class="table">
     <thead>
     <tr>
@@ -32,10 +37,9 @@
         <td>{{ doctor.specialization.name if doctor.specialization else '' }}</td>
         <td>{{ doctor.department.name if doctor.department else '' }}</td>
         <td>
-            <!--        <a href="{{ url_for('edit_doctor', doctor_id=doctor.id) }}" methods="post" class="btn btn-primary">Изменить</a>-->
-            <form action="{{ url_for('edit_doctor', doctor_id=doctor.id) }}" method="post">
+            <form action="{{ url_for('edit_doctor_func', doctor_id=doctor.id) }}" method="post">
                 <input type="hidden" name="_method" value="PUT">
-                <button type="submit" class="btn btn-danger">Изменить</button>
+                <button type="submit" class="btn btn-primary">Изменить</button>
             </form>
 
             <form action="{{ url_for('delete_doctor', doctor_id=doctor.id) }}" method="post">

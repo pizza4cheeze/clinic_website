@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit a patient</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('edit_patient_res', patient_id=patient.id) }}" method="post">
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" value="{{ patient.surname }}" required><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ patient.name }}" required><br>
+
+    <label for="secondname">Second Name:</label>
+    <input type="text" id="secondname" name="secondname" value="{{ patient.secondname }}"><br>
+
+    <label for="dateofbirth">Date of Birth:</label>
+    <input type="date" id="dateofbirth" name="dateofbirth" value="{{ patient.dateofbirth }}"
+           required><br>
+
+    <label for="sex">Sex:</label>
+    <select id="sex" name="sex">
+        {% for sex in sexes %}
+        <option value="{{ sex.id }}" {% if patient.sex_id== sex.id %} selected {% endif %}>{{ sex.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+{% endblock %}

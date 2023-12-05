@@ -1,46 +1,51 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Add / Edit a doctor</title>
+<title>Edit a doctor</title>
 {% endblock %}
 
 {% block body %}
 
-<form action="{{ url_for('edit_doctor') }}" method="post">
-    <label for="surname">Фамилия:</label>
-    <input type="text" id="surname" name="surname" placeholder="Введите фамилию" value="{{ doctor.surname }}" required><br>
+<form action="{{ url_for('edit_doctor_res', doctor_id=doctor.id) }}" method="post">
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" value="{{ doctor.surname }}" required><br>
 
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" placeholder="Введите имя" value="{{ doctor.name }}" required><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ doctor.name }}" required><br>
 
-    <label for="secondname">Отчество:</label>
-    <input type="text" id="secondname" name="secondname" placeholder="Введите отчество" value="{{ doctor.secondname }}"><br>
+    <label for="secondname">Second Name:</label>
+    <input type="text" id="secondname" name="secondname" value="{{ doctor.secondname }}"><br>
 
-    <label for="momentofstartworking">Дата начала работы:</label>
-    <input type="date" id="momentofstartworking" name="momentofstartworking" placeholder="Выберите дату" value="{{ doctor.momentofstartworking }}" required><br>
+    <label for="momentofstartworking">Moment of Start Working:</label>
+    <input type="date" id="momentofstartworking" name="momentofstartworking" value="{{ doctor.momentofstartworking }}"
+           required><br>
 
-    <label for="sex">Пол:</label>
+    <label for="sex">Sex:</label>
     <select id="sex" name="sex">
         {% for sex in sexes %}
-        <option value="{{ sex.id }}">{{ sex.name }}</option>
+        <option value="{{ sex.id }}" {% if doctor.sex_id== sex.id %} selected {% endif %}>{{ sex.name }}</option>
         {% endfor %}
     </select><br>
 
-    <label for="specialization">Специализация:</label>
+    <label for="specialization">Specialization:</label>
     <select id="specialization" name="specialization">
         {% for specialization in specializations %}
-        <option value="{{ specialization.id }}">{{ specialization.name }}</option>
+        <option value="{{ specialization.id }}" {% if doctor.specialization_id== specialization.id %} selected {% endif
+                %}>{{ specialization.name }}
+        </option>
         {% endfor %}
     </select><br>
 
-    <label for="department">Отделение:</label>
+    <label for="department">Department:</label>
     <select id="department" name="department">
         {% for department in departments %}
-        <option value="{{ department.id }}">{{ department.name }}</option>
+        <option value="{{ department.id }}" {% if doctor.department_id== department.id %} selected {% endif %}>{{
+            department.name }}
+        </option>
         {% endfor %}
     </select><br>
 
-    <button type="submit">Добавить</button>
+    <button type="submit">Save Changes</button>
 </form>
 
 {% endblock %}
