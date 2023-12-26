@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit an act</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('edit_act_res', act_id=act.id) }}" method="post">
+
+    <label for="dateandtimeofservice">Date Of Service:</label>
+    <input type="datetime-local" id="dateandtimeofservice" name="dateandtimeofservice" value="{{ act.dateandtimeofservice }}"
+           required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" value="{{ act.price }}"
+           required><br>
+
+    <label for="doctor_id">Doctor's ID:</label>
+    <input type="number" id="doctor_id" name="doctor_id" value="{{ act.doctor_id }}"
+           required><br>
+
+    <label for="patient_id">Patient's ID:</label>
+    <input type="number" id="patient_id" name="patient_id" value="{{ act.patient_id }}"
+           required><br>
+
+    <label for="service_id">Service's ID:</label>
+    <input type="number" id="service_id" name="service_id" value="{{ act.service_id }}"
+           required><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+{% endblock %}

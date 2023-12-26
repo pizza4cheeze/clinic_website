@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div>
+    <h1>Acts</h1>
+    <a href="{{ url_for('add_act') }}" class="btn btn-primary">Создать</a>
+
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Date of service</th>
+        <th scope="col">Price</th>
+        <th scope="col">Doctor's ID</th>
+        <th scope="col">Patient's ID</th>
+        <th scope="col">Service's ID</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for act in acts %}
+    <tr>
+        <th scope="row">{{ act.id }}</th>
+        <td>{{ act.dateandtimeofservice }}</td>
+        <td>{{ act.price }}</td>
+        <td>{{ act.doctor_id }}</td>
+        <td>{{ act.patient_id }}</td>
+        <td>{{ act.service_id }}</td>
+        <td>
+            <form action="{{ url_for('edit_act_func', act_id=act.id) }}" method="post">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit" class="btn btn-primary">Изменить</button>
+            </form>
+
+            <form action="{{ url_for('delete_act', act_id=act.id) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Search Doctor</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Search Doctor</h1>
+    <form action="{{ url_for('search_doctor') }}" method="post">
+        <label for="specialization">Выберите специализацию:</label>
+        <select name="specialization" id="specialization">
+            {% for specialization in specializations %}
+                <option value="{{ specialization.id }}">{{ specialization.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="sex">Выберите пол:</label>
+        <select name="sex" id="sex">
+            {% for sex in sexes %}
+                <option value="{{ sex.id }}">{{ sex.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Найти">
+    </form>
+
+{% endblock %}

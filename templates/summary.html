@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Results for chosen period</title>
+{% endblock %}
+
+{% block body %}
+<h1>Summary</h1>
+
+    <h2>Общая статистика клиники за выбранный период:</h2>
+    <p>Общее количество услуг: {{ total_services_clinic }}</p>
+    <p>Общая сумма: {{ total_amount_clinic }}</p>
+
+    <h2>Статистика по отделениям:</h2>
+    <table>
+        <tr>
+            <th>ID отделения</th>
+            <th>Количество услуг</th>
+            <th>Сумма</th>
+        </tr>
+        {% for department_id, stats in department_stats.items() %}
+            <tr>
+                <td>{{ department_id }}</td>
+                <td>{{ stats.service_count }}</td>
+                <td>{{ stats.total_amount }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Статистика по врачам:</h2>
+    <table>
+        <tr>
+            <th>ID врача</th>
+            <th>Количество услуг</th>
+            <th>Сумма</th>
+        </tr>
+        {% for doctor_stat in doctor_stats %}
+            <tr>
+                <td>{{ doctor_stat[0] }}</td>
+                <td>{{ doctor_stat[1] }}</td>
+                <td>{{ doctor_stat[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

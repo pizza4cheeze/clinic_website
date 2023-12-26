@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Add a specialization</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('add_specialization')}}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <button type="submit">Add Specialization</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit a department</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('edit_service_res', service_id=service.id) }}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ service.name }}" required><br>
+    <label for="name">Price:</label>
+    <input type="number" id="price" name="price" value="{{ service.price }}" required><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+{% endblock %}
